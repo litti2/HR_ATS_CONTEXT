@@ -38,8 +38,8 @@ export async function scrapeGithub(githubUrl: string): Promise<GitHubSummary> {
       .slice(0, 5)
       .map((r) => ({
         name: r.name,
-        description: r.description,
-        language: r.language,
+        description: r.description || null,
+        language: r.language || null,
         stars: r.stargazers_count || 0,
         forks: r.forks_count || 0,
         last_pushed: r.pushed_at || '',
