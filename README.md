@@ -4,12 +4,6 @@
 
 Deployed Link : https://hr-ats-context-r2cz.vercel.app/
 
-## ✨ Core Features
-
--   **🧠 Gemini AI Scoring:** Beyond keyword matching. It understands context, projects, and role-fit.
--   **📊 Google Sheets Integration:** Syncs directly with your existing application forms.
--   **✨ Premium Glassmorphism UI:** A high-end dashboard with smooth animations and dark mode.
--   **✉️ One-Click Outreach:** Approve candidates to trigger automated, follow-up emails for the assignment and interview scheduling.
 
 ---
 
@@ -19,7 +13,7 @@ Deployed Link : https://hr-ats-context-r2cz.vercel.app/
 -   **Database:** Supabase (PostgreSQL)
 -   **AI:** Google Gemini 1.5 Pro
 -   **Styling:** Tailwind CSS + Framer Motion
--   **Integration:** Google Sheets API
+-   **Integration:** Google Sheets API 
 
 ---
 
@@ -52,6 +46,9 @@ SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 GOOGLE_CREDENTIALS={"type":"service_account",...}
 GOOGLE_TOKEN={"access_token":...}
 
+# GitHub Intelligence
+GITHUB_TOKEN=your_pat_token
+
 ```
 
 ---
@@ -69,6 +66,9 @@ GOOGLE_TOKEN={"access_token":...}
 -   Copy the `URL`, `anon public` key, and `service_role` secret.
 -   Run the SQL found in `supabase/schema.sql` in the Supabase SQL Editor.
 
+### 3. GitHub Token (PAT)
+Go to GitHub Settings > Developer Settings > Personal access tokens (classic).
+Generate a new token with the repo scope.
 
 ### 4. Google Sheets (Advanced)
 -   Go to [Google Cloud Console](https://console.cloud.google.com/).
