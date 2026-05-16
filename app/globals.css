@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   ContextHire Elite — Design Tokens
+   ============================================================ */
+:root {
+  --obsidian: #09090B;
+  --surface: #131315;
+  --surface-low: #1c1b1d;
+  --surface-mid: #201f22;
+  --surface-high: #2a2a2c;
+  --glass-fill: rgba(15, 15, 18, 0.6);
+  --glass-edge: rgba(255, 255, 255, 0.10);
+  --glass-edge-hover: rgba(255, 255, 255, 0.18);
+  --primary-vivid: #6c3ef0;
+  --primary-light: #ccbeff;
+  --teal-vivid: #28dfb5;
+  --teal-light: #41eec3;
+  --sky: #b4c5ff;
+  --text-primary: #e5e1e4;
+  --text-secondary: #a1a1aa;
+  --text-muted: #52525b;
+  --outline: #494455;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================================
+   Base Reset
+   ============================================================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--obsidian);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   Scrollbar
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(108, 62, 240, 0.25);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(108, 62, 240, 0.45);
+}
+
+/* ============================================================
+   Component Classes
+   ============================================================ */
+@layer components {
+  /* ---- Glass Card ---- */
+  .glass-card {
+    @apply relative rounded-3xl border backdrop-blur-xl;
+    border-color: var(--glass-edge);
+    background: linear-gradient(
+      160deg,
+      rgba(20, 20, 26, 0.75) 0%,
+      rgba(14, 14, 18, 0.85) 100%
+    );
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04),
+                0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s var(--ease-out-expo);
+  }
+
+  .glass-card:hover {
+    border-color: var(--glass-edge-hover);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06),
+                0 16px 48px rgba(0, 0, 0, 0.4),
+                0 0 40px rgba(108, 62, 240, 0.06);
+    transform: translateY(-3px);
+  }
+
+  .glass-card-static {
+    @apply relative rounded-3xl border backdrop-blur-xl;
+    border-color: var(--glass-edge);
+    background: linear-gradient(
+      160deg,
+      rgba(20, 20, 26, 0.75) 0%,
+      rgba(14, 14, 18, 0.85) 100%
+    );
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04),
+                0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  /* ---- Gradient Text ---- */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #ccbeff 0%, #6c3ef0 40%, #28dfb5 100%);
+  }
+
+  .gradient-text-hero {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #ffffff 0%, #ccbeff 35%, #6c3ef0 65%, #28dfb5 100%);
+  }
+
+  .gradient-text-teal {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #41eec3 0%, #28dfb5 50%, #00d1a8 100%);
+  }
+
+  /* ---- Buttons ---- */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 font-semibold text-white transition-all duration-300 cursor-pointer;
+    background: linear-gradient(135deg, #6c3ef0 0%, #5b2de0 100%);
+    box-shadow: 0 4px 20px rgba(108, 62, 240, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(108, 62, 240, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 12px rgba(108, 62, 240, 0.25);
+  }
+
+  .btn-secondary {
+    @apply relative inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 font-semibold transition-all duration-300 cursor-pointer;
+    color: var(--text-primary);
+    border: 1px solid var(--glass-edge);
+    background: var(--glass-fill);
+    backdrop-filter: blur(12px);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--glass-edge-hover);
+    background: var(--glass-fill);
+    box-shadow: 0 0 24px rgba(108, 62, 240, 0.08);
+    transform: translateY(-1px);
+  }
+
+  .btn-teal {
+    @apply relative inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 font-semibold text-white transition-all duration-300 cursor-pointer;
+    background: linear-gradient(135deg, #00d1a8 0%, #28dfb5 100%);
+    box-shadow: 0 4px 20px rgba(40, 223, 181, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    color: #00382b;
+  }
+
+  .btn-teal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(40, 223, 181, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+
+  .btn-danger {
+    @apply relative inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 font-semibold text-white transition-all duration-300 cursor-pointer;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.2);
+  }
+
+  /* ---- Input Fields ---- */
+  .input-field {
+    @apply w-full rounded-2xl border px-5 py-3.5 text-sm outline-none transition-all duration-300;
+    border-color: var(--glass-edge);
+    background: rgba(14, 14, 16, 0.8);
+    color: var(--text-primary);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .input-field::placeholder {
+    color: var(--text-muted);
+  }
+
+  .input-field:focus {
+    border-color: rgba(40, 223, 181, 0.4);
+    box-shadow: 0 0 0 3px rgba(40, 223, 181, 0.08),
+                inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    background: rgba(18, 18, 22, 0.9);
+  }
+
+  .textarea-field {
+    @apply input-field min-h-[140px] resize-y leading-relaxed;
+  }
+
+  /* ---- Form Label ---- */
+  .form-label {
+    @apply mb-2 block text-sm font-medium;
+    color: var(--text-secondary);
+  }
+
+  /* ---- Pills / Tags ---- */
+  .pill {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium font-mono;
+    background: rgba(108, 62, 240, 0.10);
+    color: #ccbeff;
+    border: 1px solid rgba(108, 62, 240, 0.15);
+  }
+
+  .pill-teal {
+    background: rgba(40, 223, 181, 0.10);
+    color: #41eec3;
+    border-color: rgba(40, 223, 181, 0.15);
+  }
+
+  .pill-blue {
+    background: rgba(180, 197, 255, 0.10);
+    color: #b4c5ff;
+    border-color: rgba(180, 197, 255, 0.15);
+  }
+
+  .pill-pink {
+    background: rgba(244, 114, 182, 0.10);
+    color: #f472b6;
+    border-color: rgba(244, 114, 182, 0.15);
+  }
+
+  .pill-orange {
+    background: rgba(251, 146, 60, 0.10);
+    color: #fb923c;
+    border-color: rgba(251, 146, 60, 0.15);
+  }
+
+  .pill-amber {
+    background: rgba(251, 191, 36, 0.10);
+    color: #fbbf24;
+    border-color: rgba(251, 191, 36, 0.15);
+  }
+
+  /* ---- Section ---- */
+  .section-container {
+    @apply mx-auto max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+
+  /* ---- Noise Overlay ---- */
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.018;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  /* ---- Divider ---- */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--glass-edge) 50%, transparent 100%);
+  }
+}
+
+/* ============================================================
+   Animation Delays
+   ============================================================ */
+.delay-75  { animation-delay:  75ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-225 { animation-delay: 225ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-375 { animation-delay: 375ms; }
+.delay-450 { animation-delay: 450ms; }
+.delay-525 { animation-delay: 525ms; }
+.delay-600 { animation-delay: 600ms; }
+
+/* ============================================================
+   Background Mesh Gradient
+   ============================================================ */
+.mesh-gradient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.mesh-gradient::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background:
+    radial-gradient(ellipse at 25% 25%, rgba(108, 62, 240, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 20%, rgba(40, 223, 181, 0.05) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 75%, rgba(180, 197, 255, 0.04) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 80%, rgba(108, 62, 240, 0.03) 0%, transparent 40%);
+  animation: meshDrift 25s ease-in-out infinite alternate;
+}
+
+@keyframes meshDrift {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  33%  { transform: translate(-1.5%, -1%) rotate(0.5deg); }
+  66%  { transform: translate(1%, -0.5%) rotate(-0.3deg); }
+  100% { transform: translate(0.5%, 1%) rotate(0.2deg); }
+}
+
+/* ============================================================
+   Score Bar Gradient
+   ============================================================ */
+.score-bar-gradient {
+  background: linear-gradient(90deg, #ef4444 0%, #f59e0b 25%, #fbbf24 40%, #28dfb5 65%, #6c3ef0 100%);
+}
+
+/* ============================================================
+   Focus Ring
+   ============================================================ */
+.focus-ring:focus-visible {
+  outline: 2px solid rgba(108, 62, 240, 0.5);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   Reduced Motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
