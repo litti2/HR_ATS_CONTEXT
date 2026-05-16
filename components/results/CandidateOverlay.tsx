@@ -146,36 +146,36 @@ export default function CandidateOverlay({
               </h3>
               <div className="grid grid-cols-3 gap-4 mb-5">
                 <div className="p-4 rounded-2xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] text-center">
-                  <div className="text-2xl font-mono font-bold text-on-surface mb-1">{candidate.github_summary.public_repos ?? candidate.github_summary.total_repos ?? 0}</div>
+                  <div className="text-2xl font-mono font-bold text-on-surface mb-1">{candidate.github_summary.public_repos ?? 0}</div>
                   <div className="text-[10px] text-[#a1a1aa] font-mono uppercase">Total Repos</div>
                 </div>
                 <div className="p-4 rounded-2xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] text-center">
-                  <div className="text-2xl font-mono font-bold text-on-surface mb-1">{candidate.github_summary.active_weeks_90d ?? candidate.github_summary.active_weeks_last_year ?? 0}</div>
+                  <div className="text-2xl font-mono font-bold text-on-surface mb-1">{candidate.github_summary.active_weeks_90d ?? 0}</div>
                   <div className="text-[10px] text-[#a1a1aa] font-mono uppercase">Active Weeks</div>
                 </div>
                 <div className="p-4 rounded-2xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] text-center">
                   <div className="text-2xl font-mono font-bold text-on-surface mb-1 flex items-center justify-center gap-1">
                     <GitCommit size={16} className="text-[#52525b]" />
-                    {candidate.github_summary.recent_commits_count ?? (candidate.github_summary.top_repos?.length ?? 0)}
+                    {candidate.github_summary.top_repos?.length ?? 0}
                   </div>
-                  <div className="text-[10px] text-[#a1a1aa] font-mono uppercase">Recent Commits</div>
+                  <div className="text-[10px] text-[#a1a1aa] font-mono uppercase">Top Repos</div>
                 </div>
               </div>
 
               <div className="mb-5">
                 <div className="text-xs text-[#52525b] font-mono mb-2">Top Languages</div>
                 <div className="flex flex-wrap gap-2">
-                  {(candidate.github_summary.languages || candidate.github_summary.top_languages || []).map((lang: any) => (
+                  {(candidate.github_summary.languages || []).map((lang: any) => (
                     <Badge key={typeof lang === 'string' ? lang : lang.language} size="sm" variant="blue">{typeof lang === 'string' ? lang : lang.language}</Badge>
                   ))}
                 </div>
               </div>
               
-              {(candidate.github_summary.top_repos || candidate.github_summary.notable_repos || []).length > 0 && (
+              {(candidate.github_summary.top_repos || []).length > 0 && (
                 <div>
                   <div className="text-xs text-[#52525b] font-mono mb-2">Notable Repositories</div>
                   <ul className="space-y-2">
-                    {(candidate.github_summary.top_repos || candidate.github_summary.notable_repos || []).map((repo: any) => (
+                    {(candidate.github_summary.top_repos || []).map((repo: any) => (
                       <li key={typeof repo === 'string' ? repo : repo.name} className="text-sm text-on-surface bg-[rgba(255,255,255,0.02)] rounded-lg px-3 py-2 font-mono flex items-center gap-2 before:content-[''] before:w-1.5 before:h-1.5 before:rounded-full before:bg-[#52525b]">
                         {typeof repo === 'string' ? repo : `${repo.name}${repo.stars ? ` ⭐${repo.stars}` : ''}`}
                       </li>
