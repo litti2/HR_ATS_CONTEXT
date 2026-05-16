@@ -17,7 +17,7 @@ export default function DomainTags({ signals, primaryDomain, max = 4 }: DomainTa
   return (
     <div className="flex flex-wrap gap-1.5">
       {primaryDomain && (
-        <Badge variant={variant === 'pill-cyan' ? 'cyan' : variant === 'pill-blue' ? 'blue' : variant === 'pill-pink' ? 'pink' : variant === 'pill-orange' ? 'orange' : 'default'}>
+        <Badge variant={variant === 'pill-teal' ? 'teal' : variant === 'pill-blue' ? 'blue' : variant === 'pill-pink' ? 'pink' : variant === 'pill-orange' ? 'orange' : 'default'}>
           {primaryDomain === 'ml-ai' ? 'ML/AI' : primaryDomain.charAt(0).toUpperCase() + primaryDomain.slice(1)} Heavy
         </Badge>
       )}

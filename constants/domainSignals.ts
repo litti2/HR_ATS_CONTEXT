@@ -42,7 +42,7 @@ export const DOMAIN_LABELS: Record<DomainType, string> = {
 
 export const DOMAIN_COLORS: Record<DomainType, string> = {
   frontend: 'pill-blue',
-  backend: 'pill-cyan',
+  backend: 'pill-teal',
   'ml-ai': 'pill',
   fullstack: 'pill-orange',
   devops: 'pill-pink',
